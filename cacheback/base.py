@@ -3,7 +3,7 @@ import logging
 import hashlib
 import collections
 
-from django.core.cache import get_cache, DEFAULT_CACHE_ALIAS
+from django.core.cache import caches, DEFAULT_CACHE_ALIAS
 from django.conf import settings
 import six
 
@@ -76,7 +76,7 @@ class Job(object):
 
     def __init__(self):
         self.cache_alias = getattr(settings, 'CACHEBACK_CACHE_ALIAS', DEFAULT_CACHE_ALIAS)
-        self.cache = get_cache(self.cache_alias)
+        self.cache = caches.get(self.cache_alias)
 
     # --------
     # MAIN API

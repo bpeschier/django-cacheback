@@ -2,7 +2,7 @@ import time
 
 from celery.task import task
 from celery.utils.log import get_task_logger
-from django.utils import importlib
+import importlib
 
 
 logger = get_task_logger(__name__)
